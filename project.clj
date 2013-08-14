@@ -1,4 +1,4 @@
-(defproject hylla "0.1.0"
+(defproject hylla "0.2.0"
   :description "A ClojureScript utilities library"
   :url "http://github.com/hylla"
   :license {:name "Eclipse Public License"

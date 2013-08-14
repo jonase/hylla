@@ -24,12 +24,15 @@
   ([url callback]
      (get url nil callback))
   ([url data callback]
-     (send url :method :get :data data :callback callback)))
+     (XhrIo/send (str url (when data (str "?" (url-encode data))))
+                 (fn [e]
+                   (-> e .-target .getResponseText r/read-string callback))
+                 "GET")))
 
 (defn post
   ([url]
-     (get url (constantly nil)))
+     (post url (constantly nil)))
   ([url callback]
-     (get url nil callback))
+     (post url nil callback))
   ([url data callback]
      (send url :method :post :data data :callback callback)))
